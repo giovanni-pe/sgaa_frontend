@@ -1,6 +1,7 @@
 <div>
     <nav>
       <a routerLink="/advisory-contracts">Advisory Contracts</a>
+      <app-language-switcher (languageChanged)="onLanguageChanged($event)"></app-language-switcher>
     </nav>
     <router-outlet></router-outlet>
   </div>

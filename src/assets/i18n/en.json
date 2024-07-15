@@ -37,8 +37,12 @@
         "MESSAGE": "Message",
         "VIEW_DETAILS": "View Details",
         "ACCEPT_REQUEST": "Accept Request",
-        "REJECT_REQUEST": "Reject Request"
-      
+        "REJECT_REQUEST": "Reject Request",
+        "START_DATE": "Start Date",
+        "END_DATE": "End Date",
+        "APPLY_FILTER": "Apply Filter"
+          
+          
       
 }
   

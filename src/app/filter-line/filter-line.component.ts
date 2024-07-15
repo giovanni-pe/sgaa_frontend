@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ResearchLineService } from '../research-line.service'; // Importa el servicio
+import { ResearchLineService } from '../core/services/research-line.service'; // Importa el servicio
 
 @Component({
   selector: 'app-filter-line',
@@ -14,14 +14,16 @@ import { ResearchLineService } from '../research-line.service'; // Importa el se
 })
 export class FilterLineComponent implements OnInit {
   lines: { id: string, name: string }[] = [];
-  selectedLineId: string = 'RESEGTY';
+  selectedLineId: string = 'ALL';
 
   @Output() lineChanged = new EventEmitter<string>();
 
-  constructor(private researchLineService: ResearchLineService) {}
+  constructor(private researchLineService: ResearchLineService) {
+  }
 
   ngOnInit(): void {
     this.researchLineService.getResearchLines().subscribe(data => {
+      
       this.lines = data;
     });
   }

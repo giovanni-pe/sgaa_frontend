@@ -36,5 +36,8 @@
   "MESSAGE": "Mensaje:",
   "VIEW_DETAILS": "Ver Detalles",
   "ACCEPT_REQUEST": "Aceptar Solicitud",
-  "REJECT_REQUEST": "Denegar Solicitud"
+  "REJECT_REQUEST": "Denegar Solicitud",
+  "START_DATE": "Fecha de Inicio",
+  "END_DATE": "Fecha de Fin",
+  "APPLY_FILTER": "Aplicar Filtro" 
  }

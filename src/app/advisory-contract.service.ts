@@ -75,11 +75,19 @@ export class AdvisoryContractService {
     console.log('API URL:', this.apiUrl);
   }
 
-  getAdvisoryContracts(researchLineId?: string, includeDeleted: boolean = false): Observable<ApiResponse> { 
+  getAdvisoryContracts(researchLineId?: string, includeDeleted: boolean = false,startDate?:string,endDate?:string): Observable<ApiResponse> { 
     let params = new HttpParams();
     if (researchLineId && researchLineId !== 'ALL') {
       params = params.append('researchLineId', researchLineId);
     }
+    if (startDate && startDate !== '') {
+      params = params.append('startDate', startDate);
+    }
+    
+    if (endDate && new Date(endDate).getTime() !== new Date().setHours(0, 0, 0, 0)) {
+      params = params.append('endDate', endDate);
+    }
+    
     params = params.append('includeDeleted', includeDeleted.toString());
 
     console.log('Fetching advisory contracts with params:', params.toString());

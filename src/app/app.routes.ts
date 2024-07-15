@@ -1,16 +1,22 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
-import { AdvisoryContractComponent } from './advisory-contract/advisory-contract.component';
-
+import { AuthGuard } from './auth.guard'; 
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import {ResearchGroupComponent } from './research-group/research-group.component'
 export const routes: Routes = [
+  
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -27,7 +33,13 @@ export const routes: Routes = [
         path: 'advisory-contracts',
         loadChildren: () => import('./advisory-contract/routes').then((m) => m.routes)
       },
-
+      {
+        path: 'login',
+        loadChildren: () => import('./login/routes').then((m) => m.routes)
+      },
+      { path: 'research-group',
+        loadChildren: () => import('./research-group/routes').then((m) => m.routes)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/routes').then((m) => m.routes)
@@ -77,7 +89,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'login',
+    path: 'login1',
     loadComponent: () => import('./views/pages/login/login.component').then(m => m.LoginComponent),
     data: {
       title: 'Login Page'

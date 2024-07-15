@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LangSelectorComponent } from './lang-selector.component';
+import { ResearchGroupComponent } from './research-group.component';
 
-describe('LangSelectorComponent', () => {
-  let component: LangSelectorComponent;
-  let fixture: ComponentFixture<LangSelectorComponent>;
+describe('ResearchGroupComponent', () => {
+  let component: ResearchGroupComponent;
+  let fixture: ComponentFixture<ResearchGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LangSelectorComponent]
+      imports: [ResearchGroupComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LangSelectorComponent);
+    fixture = TestBed.createComponent(ResearchGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

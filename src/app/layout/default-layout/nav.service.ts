@@ -121,6 +121,19 @@ export class NavService {
         ]
       },
       {
+        name: this.translate.instant('Grupos'),
+        url: '/base',
+        iconComponent: { name: 'cil-people' },
+        children: [
+          {
+            name: this.translate.instant('ListGrups'),
+            url: '/research-group',
+            icon: 'nav-icon-bullet'
+          },
+          
+        ]
+      },
+      {
         name: this.translate.instant('Contratos de Asesoria'),
         url: '/buttons',
         iconComponent: { name: 'cil-cursor' },
