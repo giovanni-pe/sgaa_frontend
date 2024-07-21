@@ -16,6 +16,7 @@ import { routes } from './app.routes';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageService } from './language.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Función de fábrica para la carga del archivo de traducción
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -56,6 +57,6 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     TranslateService,
-    LanguageService // Proveedor del LanguageService
+    LanguageService, provideAnimationsAsync() // Proveedor del LanguageService
   ]
 };

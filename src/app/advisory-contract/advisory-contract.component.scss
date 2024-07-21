@@ -1,7 +1,6 @@
-
-// Ajustes generales para modo oscuro y claro
 #content {
   margin: 20px;
+
   .card {
     background-color: var(--cui-card-bg, #fff);
     color: var(--cui-card-color, #000);
@@ -41,5 +40,33 @@
 
   .btn {
     margin-right: 0.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color, #1976d2);
+    color: #fff;
+    &:hover {
+      background-color: var(--primary-color-dark, #1565c0);
+      transform: scale(1.05);
+    }
+  }
+
+  .btn-success {
+    background-color: var(--success-color, #28a745);
+    color: #fff;
+    &:hover {
+      background-color: var(--success-color-dark, #218838);
+      transform: scale(1.05);
+    }
+  }
+
+  .btn-danger {
+    background-color: var(--danger-color, #dc3545);
+    color: #fff;
+    &:hover {
+      background-color: var(--danger-color-dark, #c82333);
+      transform: scale(1.05);
+    }
   }
 }

@@ -3,7 +3,6 @@ import { DefaultLayoutComponent } from './layout';
 import { AuthGuard } from './auth.guard'; 
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-import {ResearchGroupComponent } from './research-group/research-group.component'
 export const routes: Routes = [
   
   {
@@ -32,6 +31,10 @@ export const routes: Routes = [
       {
         path: 'advisory-contracts',
         loadChildren: () => import('./advisory-contract/routes').then((m) => m.routes)
+      },
+      {
+        path: 'accepted-advisory-contracts',
+        loadChildren: () => import('./accepted-advisory-contract/routes').then((m) => m.routes)
       },
       {
         path: 'login',

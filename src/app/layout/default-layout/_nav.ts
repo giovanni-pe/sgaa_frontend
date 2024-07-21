@@ -21,7 +21,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Aceptados',
-    url: '/theme/typography',
+    url: '/accepted-advisory-contracts',
     linkProps: { fragment: 'headings' },
     iconComponent: { name: 'cilSave' }
   },

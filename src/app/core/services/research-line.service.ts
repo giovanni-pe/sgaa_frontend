@@ -18,7 +18,5 @@ export class ResearchLineService extends BaseService {
         id: item.id,
         name: item.name
       }))))
-    
-    
   }
 }

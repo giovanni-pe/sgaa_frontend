@@ -1,0 +1,37 @@
+.dialog-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #c7d6e6; // Primary color
+  }
+  
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 16px;
+  }
+  
+  .cancel-button {
+    margin-right: 8px;
+    color: #757575; // Gray color
+  }
+  
+  .send-button {
+    background-color: #1976d2; // Primary color
+    color: white;
+  }
+  
+  .send-button:hover {
+    background-color: #1565c0; // Darker shade of primary color
+  }
+  

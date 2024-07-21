@@ -1,0 +1,12 @@
+<h2 mat-dialog-title class="dialog-title">{{ 'SEND_ACCEPTANCE_MESSAGE' | translate }} </h2>
+ <h3 mat-dialog-title class="dialog-title">{{ data.studentName }}</h3>
+<mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ 'MESSAGE' | translate }}</mat-label>
+    <textarea matInput [(ngModel)]="message" cdkTextareaAutosize></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="onCancel()" class="cancel-button">{{ 'CANCEL' | translate }}</button>
+  <button mat-button (click)="onSend()" color="primary" class="send-button">{{ 'SEND' | translate }}</button>
+</mat-dialog-actions>

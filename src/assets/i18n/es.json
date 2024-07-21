@@ -39,5 +39,8 @@
   "REJECT_REQUEST": "Denegar Solicitud",
   "START_DATE": "Fecha de Inicio",
   "END_DATE": "Fecha de Fin",
-  "APPLY_FILTER": "Aplicar Filtro" 
+  "APPLY_FILTER": "Aplicar Filtro",
+    "SEND_ACCEPTANCE_MESSAGE":"Aceptar Asesoria",
+         "CANCEL":"Cancelar",
+         "SEND": "Enviar"
  }

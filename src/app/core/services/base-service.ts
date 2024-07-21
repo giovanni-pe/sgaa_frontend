@@ -31,36 +31,60 @@ export abstract class BaseService {
     );
   }
 
-  // Método para obtener un registro por ID
+  // // Método para obtener un registro por ID
+  // getById(id: number | string): Observable<any> {
+  //   return from(this.configService.getConfigLoadedPromise()).pipe(
+  //     switchMap(() => this.http.get<any>(`${this.apiUrl}/${id}`)),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // // Método para crear un nuevo registro
+  // create(data: any): Observable<any> {
+  //   return from(this.configService.getConfigLoadedPromise()).pipe(
+  //     switchMap(() => this.http.post<any>(this.apiUrl, data)),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // // Método para actualizar un registro por ID
+  // update(id: number | string, data: any): Observable<any> {
+  //   return from(this.configService.getConfigLoadedPromise()).pipe(
+  //     switchMap(() => this.http.put<any>(`${this.apiUrl}/${id}`, data)),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // // Método para eliminar un registro por ID
+  // delete(id: number | string): Observable<any> {
+  //   return from(this.configService.getConfigLoadedPromise()).pipe(
+  //     switchMap(() => this.http.delete<any>(`${this.apiUrl}/${id}`)),
+  //     catchError(this.handleError)
+  //   );
+  // }
+  // getAll(): Observable<any> {
+  //   return this.performRequest(() => this.http.get<any>(this.apiUrl));
+  // }
+  protected performRequest<T>(request: () => Observable<T>): Observable<T> {
+    return from(this.init()).pipe(
+      switchMap(() => request()),
+      catchError(this.handleError)
+    );
+  }
   getById(id: number | string): Observable<any> {
-    return from(this.configService.getConfigLoadedPromise()).pipe(
-      switchMap(() => this.http.get<any>(`${this.apiUrl}/${id}`)),
-      catchError(this.handleError)
-    );
+    return this.performRequest(() => this.http.get<any>(`${this.apiUrl}/${id}`));
   }
 
-  // Método para crear un nuevo registro
   create(data: any): Observable<any> {
-    return from(this.configService.getConfigLoadedPromise()).pipe(
-      switchMap(() => this.http.post<any>(this.apiUrl, data)),
-      catchError(this.handleError)
-    );
+    return this.performRequest(() => this.http.post<any>(this.apiUrl, data));
   }
 
-  // Método para actualizar un registro por ID
   update(id: number | string, data: any): Observable<any> {
-    return from(this.configService.getConfigLoadedPromise()).pipe(
-      switchMap(() => this.http.put<any>(`${this.apiUrl}/${id}`, data)),
-      catchError(this.handleError)
-    );
+    return this.performRequest(() => this.http.put<any>(`${this.apiUrl}/${id}`, data));
   }
 
-  // Método para eliminar un registro por ID
   delete(id: number | string): Observable<any> {
-    return from(this.configService.getConfigLoadedPromise()).pipe(
-      switchMap(() => this.http.delete<any>(`${this.apiUrl}/${id}`)),
-      catchError(this.handleError)
-    );
+    return this.performRequest(() => this.http.delete<any>(`${this.apiUrl}/${id}`));
   }
 }
 

@@ -30,7 +30,7 @@ export class NavService {
       },
       {
         name: this.translate.instant('Aceptados'),
-        url: '/theme/typography',
+        url: '/accepted-advisory-contracts',
         linkProps: { fragment: 'headings' },
         iconComponent: { name: 'cilSave' }
       },

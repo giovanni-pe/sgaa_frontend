@@ -40,9 +40,10 @@
         "REJECT_REQUEST": "Reject Request",
         "START_DATE": "Start Date",
         "END_DATE": "End Date",
-        "APPLY_FILTER": "Apply Filter"
-          
-          
+        "APPLY_FILTER": "Apply Filter",
+         "SEND_ACCEPTANCE_MESSAGE":"Send Acceptance",
+         "CANCEL":"Cancel",
+         "SEND": "Send"
       
 }
   
