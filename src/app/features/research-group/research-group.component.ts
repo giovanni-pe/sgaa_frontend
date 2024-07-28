@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResearchGroupService } from '../core/services/research-group.service';
+import { ResearchGroupService } from '../../core/services/research-group.service';
 
 declare var $: any;
 

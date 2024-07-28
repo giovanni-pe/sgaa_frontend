@@ -30,18 +30,18 @@ export const routes: Routes = [
       },
       {
         path: 'advisory-contracts',
-        loadChildren: () => import('./advisory-contract/routes').then((m) => m.routes)
+        loadChildren: () => import('./features/advisory-contract/routes').then((m) => m.routes)
       },
       {
         path: 'accepted-advisory-contracts',
-        loadChildren: () => import('./accepted-advisory-contract/routes').then((m) => m.routes)
+        loadChildren: () => import('./features/accepted-advisory-contract/routes').then((m) => m.routes)
       },
       {
         path: 'login',
         loadChildren: () => import('./login/routes').then((m) => m.routes)
       },
       { path: 'research-group',
-        loadChildren: () => import('./research-group/routes').then((m) => m.routes)
+        loadChildren: () => import('./features/research-group/routes').then((m) => m.routes)
       },
       {
         path: 'base',

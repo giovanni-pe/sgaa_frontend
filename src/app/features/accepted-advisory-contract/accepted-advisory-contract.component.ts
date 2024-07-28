@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdvisoryContractService } from '../core/services/advisory-contract.service';
-import { AdvisoryContract } from '../core/models/advisory-contract.model';
+import { AdvisoryContractService } from '../../core/services/advisory-contract.service';
+import { AdvisoryContract } from '../../core/models/advisory-contract.model';
 
 declare var $: any;
 

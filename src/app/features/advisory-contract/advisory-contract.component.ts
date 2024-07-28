@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-import { AdvisoryContractService } from '../core/services/advisory-contract.service';
+import { AdvisoryContractService } from '../../core/services/advisory-contract.service';
 import { FilterLineComponent } from '../filter-line/filter-line.component';
 import { AdvisoryContractDateFilterComponent } from '../advisory-contract-date-filter/advisory-contract-date-filter.component';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
@@ -11,7 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-advisory-contract',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, TranslateModule, FilterLineComponent, AdvisoryContractDateFilterComponent, MessageModalComponent, MatDialogModule,MatIconModule],
+  imports: [CommonModule, HttpClientModule, TranslateModule, FilterLineComponent, AdvisoryContractDateFilterComponent,
+     MessageModalComponent, MatDialogModule,MatIconModule],
   templateUrl: './advisory-contract.component.html',
   styleUrls: ['./advisory-contract.component.scss']
 })

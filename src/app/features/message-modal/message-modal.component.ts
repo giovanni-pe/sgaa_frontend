@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AdvisoryContractService } from '../core/services/advisory-contract.service';
+import { AdvisoryContractService } from '../../core/services/advisory-contract.service';
 
 @Component({
   selector: 'app-message-modal',

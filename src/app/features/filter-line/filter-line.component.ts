@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ResearchLineService } from '../core/services/research-line.service'; // Importa el servicio
+import { ResearchLineService } from '../../core/services/research-line.service'; // Importa el servicio
 
 @Component({
   selector: 'app-filter-line',
