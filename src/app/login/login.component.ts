@@ -40,4 +40,8 @@ export class LoginComponent {
       }
     });
   }
+  navigateToRegister() {
+    console.log("jjdsi sis");
+    this.router.navigate(['/register']);
+  }
 }

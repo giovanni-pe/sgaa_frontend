@@ -32,7 +32,7 @@ export class MessageModalComponent {
   onSend(): void {
     this.advisoryContractService.acceptRequest(this.data.contractId, this.message).subscribe(response => {
       console.log('Solicitud aceptada:', response);
-      window.location.reload();
+      //window.location.reload();
       this.dialogRef.close(true);  // Cierra el modal y notifica al componente principal que se envió el mensaje
     }, error => {
       console.error('Error al aceptar la solicitud:', error);
