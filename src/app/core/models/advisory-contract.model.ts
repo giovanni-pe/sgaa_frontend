@@ -5,7 +5,7 @@ export interface AdvisoryContract {
     researchLineId: string;
     thesisTopic: string;
     message: string;
-    status: number| null;
+    status: number;
     student: {
       id: string;
       userId: string;

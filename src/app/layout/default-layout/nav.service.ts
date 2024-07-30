@@ -26,7 +26,7 @@ export class NavService {
       {
         name: this.translate.instant('Solicitudes'),
         url: '/advisory-contracts',
-        iconComponent: { name: 'cilList' }
+        iconComponent: { name: 'cil-bell' }
       },
       {
         name: this.translate.instant('Aceptados'),
@@ -139,8 +139,8 @@ export class NavService {
         iconComponent: { name: 'cil-cursor' },
         children: [
           {
-            name: this.translate.instant('Buttons'),
-            url: '/buttons/buttons',
+            name: this.translate.instant('create-advisory-contract'),
+            url: 'create-advisory-contract',
             icon: 'nav-icon-bullet'
           },
           {

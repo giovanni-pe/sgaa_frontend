@@ -30,7 +30,9 @@ export class AdvisoryContractService extends BaseService {
     researchLineId?: string,
     includeDeleted: boolean = false,
     startDate?: string,
-    endDate?: string
+    endDate?: string,
+    page: number = 0,
+    pageSize: number = 10
   ): Observable<ApiResponse> {
     return this.performRequest(() => {
       let params = new HttpParams();
@@ -44,11 +46,12 @@ export class AdvisoryContractService extends BaseService {
         params = params.append('endDate', endDate);
       }
       params = params.append('includeDeleted', includeDeleted.toString());
-
-      console.log('Fetching advisory contracts with params:', params.toString());
-      return this.http.get<ApiResponse>(this.apiUrl, { params });
+      params = params.append('Page', page.toString());
+      params = params.append('PageSize', pageSize.toString());
+      return this.http.get<ApiResponse>(`${this.apiUrl}/ByProffesorId/7e3892c0-9374-49fa-a3fd-53db637a4011`, { params });
     });
   }
+  
 
   acceptRequest(contractId: string, message: string): Observable<any> {
     return this.performRequest(() => {
@@ -62,5 +65,9 @@ export class AdvisoryContractService extends BaseService {
       return this.http.put(url, JSON.stringify(payload), { headers, responseType: 'text' as 'json' });
     });
   }
-
+  deleteAdvisoryContract(contractId: string): Observable<any> {
+    const url = `${this.apiUrl}/${contractId}`;
+    console.log(contractId+'jjs no llega a eliminar');
+    return this.http.delete(url, { responseType: 'text' as 'json' });
+  }
 }

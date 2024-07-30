@@ -27,7 +27,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { delay, filter, map, tap } from 'rxjs/operators';
-import { LanguageSwitcherComponent } from 'src/app/language-switcher/language-switcher.component';
+import { LanguageSwitcherComponent } from 'src/app/shared/language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-default-header',

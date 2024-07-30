@@ -18,7 +18,6 @@ export class ConfigService {
     return firstValueFrom(this.http.get('/assets/config.json'))
       .then(data => {
         this.config = data;
-        console.log('Configuration loaded:', this.config);
         if (!this.config.apiUrl) {
           throw new Error('apiUrl is missing from configuration');
         }

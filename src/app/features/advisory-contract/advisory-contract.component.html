@@ -37,21 +37,21 @@
                   </div >
                 </div>
                 <div class="col-md-4">
-                  <button mat-raised-button color="primary" class="btn btn-success m-4 " (click)="openMessageModal(contract)">
+                  <button mat-raised-button color="primary" class="btn btn-success m-4 " (click)="openAcceptModal(contract)">
                     <mat-icon>check_circle</mat-icon>
                     {{ 'ACCEPT_REQUEST' | translate }}
                   </button>
-                  <button mat-raised-button color="warn" class="btn btn-danger m-4">
+                  <button mat-raised-button color="warn" class="btn btn-danger m-4" (click)="openDeleteModal(contract)">
                     <mat-icon>cancel</mat-icon>
                     {{ 'REJECT_REQUEST' | translate }}
-                  </button></div>
+                  </button>
+                </div>
               </div>
-             
-              
             </div>
           </div>
         </div>
       </div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50]" (page)="onPageEvent($event)"></mat-paginator>
     </div>
   </div>
 </div>

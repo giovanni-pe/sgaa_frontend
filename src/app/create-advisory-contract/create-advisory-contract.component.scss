@@ -1,0 +1,32 @@
+
+body {
+    background-color: #f5f5f5;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  .mat-card {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 16px;
+    padding: 16px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .centered-input {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .large-input {
+    width: 80%; /* Ajusta el ancho según tus necesidades */
+    max-width: 800px; /* Limita el tamaño máximo para que no sea demasiado grande */
+  }
+  
+  .mat-form-field textarea {
+    min-height: 100px; /* Aumenta la altura mínima del textarea */
+  }
+  

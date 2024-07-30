@@ -32,6 +32,7 @@ export const routes: Routes = [
         path: 'advisory-contracts',
         loadChildren: () => import('./features/advisory-contract/routes').then((m) => m.routes)
       },
+      
       {
         path: 'accepted-advisory-contracts',
         loadChildren: () => import('./features/accepted-advisory-contract/routes').then((m) => m.routes)
@@ -42,6 +43,9 @@ export const routes: Routes = [
       },
       { path: 'research-group',
         loadChildren: () => import('./features/research-group/routes').then((m) => m.routes)
+      },
+      { path: 'create-advisory-contract',
+        loadChildren: () => import('./create-advisory-contract/routes').then((m) => m.routes)
       },
       {
         path: 'base',

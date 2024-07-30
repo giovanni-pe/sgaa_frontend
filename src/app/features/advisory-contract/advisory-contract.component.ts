@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdvisoryContractService } from '../../core/services/advisory-contract.service';
 import { FilterLineComponent } from '../filter-line/filter-line.component';
 import { AdvisoryContractDateFilterComponent } from '../advisory-contract-date-filter/advisory-contract-date-filter.component';
-import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MessageModalComponent } from '../message-modal/message-modal.component';
+import { DeleteAdvisoryContractComponent } from '../../delete-advisory-contract/delete-advisory-contract.component';
+
 @Component({
   selector: 'app-advisory-contract',
   standalone: true,
   imports: [CommonModule, HttpClientModule, TranslateModule, FilterLineComponent, AdvisoryContractDateFilterComponent,
-     MessageModalComponent, MatDialogModule,MatIconModule],
+     MatDialogModule, MatIconModule, MatPaginatorModule],
   templateUrl: './advisory-contract.component.html',
   styleUrls: ['./advisory-contract.component.scss']
 })
@@ -23,6 +26,13 @@ export class AdvisoryContractComponent implements OnInit {
   startDate: string = '';
   endDate: string = '';
 
+  // Paginator properties
+  length = 0;
+  pageSize = 10;
+  pageIndex = 0;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(private advisoryContractService: AdvisoryContractService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -30,17 +40,17 @@ export class AdvisoryContractComponent implements OnInit {
   }
 
   loadContracts(): void {
-    this.advisoryContractService.getAdvisoryContracts(this.selectedLine, this.includeDeleted, this.startDate, this.endDate).subscribe(
+    this.advisoryContractService.getAdvisoryContracts(this.selectedLine, this.includeDeleted, this.startDate, this.endDate, this.pageIndex, this.pageSize).subscribe(
       (response) => {
         console.log('Response:', response);
         this.advisoryContracts = response.data.items.filter(contract => contract.status === 0);
+        this.length = response.data.count;
       },
       (error) => {
         console.error('Error fetching advisory contracts', error);
       }
     );
   }
-  
 
   onLineChanged(line: string): void {
     this.selectedLine = line;
@@ -53,28 +63,45 @@ export class AdvisoryContractComponent implements OnInit {
     this.loadContracts();
   }
 
-  
- 
-  openMessageModal(contract: any): void {
+  onPageEvent(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadContracts();
+  }
+
+  openAcceptModal(contract: any): void {
     const dialogRef = this.dialog.open(MessageModalComponent, {
       width: '600px',
       data: {
-        contractId: contract.advisoryContractId,
-        studentName: `${contract.student.user.firstName} ${contract.student.user.lastName}`
+        contractId: contract.advisoryContractId
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('El mensaje de aceptación se envió correctamente.');
-        // Aquí puedes manejar acciones adicionales, como actualizar la lista de contratos
+        console.log('El contrato se aceptó correctamente.');
+        this.loadContracts(); // Refresca la lista de contratos
       } else {
-        console.error('Hubo un error al enviar el mensaje de aceptación.');
+        console.error('Hubo un error al aceptar el contrato.');
       }
     });
   }
-  
-  
-  
-  
+
+  openDeleteModal(contract: any): void {
+    const dialogRef = this.dialog.open(DeleteAdvisoryContractComponent, {
+      width: '600px',
+      data: {
+        contractId: contract.advisoryContractId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('El contrato se eliminó correctamente.');
+        this.loadContracts(); // Refresca la lista de contratos
+      } else {
+        console.error('Hubo un error al eliminar el contrato.');
+      }
+    });
+  }
 }

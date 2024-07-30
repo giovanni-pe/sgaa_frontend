@@ -1,6 +1,7 @@
 import { ApplicationConfig, importProvidersFrom, APP_INITIALIZER } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ConfigService } from './core/services/config.service';
+import { MatNativeDateModule } from '@angular/material/core';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -15,7 +16,7 @@ import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LanguageService } from './language.service';
+import { LanguageService } from './shared/language.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Función de fábrica para la carga del archivo de traducción

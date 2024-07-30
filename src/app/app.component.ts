@@ -2,23 +2,18 @@ import { Component, OnInit , APP_INITIALIZER} from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { IconSetService } from '@coreui/icons-angular';
-import { iconSubset } from './icons/icon-subset';
-import { AdvisoryContractComponent } from './features/advisory-contract/advisory-contract.component';
-import { LoginComponent } from './login/login.component';
+import { iconSubset } from './shared/icons/icon-subset';
 import { AuthService } from './login/auth.service';
-import { ResearchGroupComponent } from './features/research-group/research-group.component';
-import { ResearchLineService} from './core/services/research-line.service';
 import { ResearchLine } from './core/models/research-line.model';
 import { Observable } from 'rxjs';
-import { LanguageService } from './language.service';
+import { LanguageService } from './shared/language.service';
 @Component({
   selector: 'app-root',
   template: `
-
     <router-outlet></router-outlet>
   `,
   standalone: true,
-  imports: [RouterOutlet,LoginComponent, AdvisoryContractComponent,ResearchGroupComponent]
+  imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
   title = 'Sistema Gestion de Asesorados';
@@ -29,7 +24,6 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private iconSetService: IconSetService,
     private authService: AuthService,
-    private researchLineService: ResearchLineService,
     private languajeService: LanguageService,
   ) {
     this.titleService.setTitle(this.title);
@@ -37,19 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.researchLines$ = this.researchLineService.getResearchLines();
-     this.researchLines$.forEach(element => {
-      console.log(element)
-     });
-    console.log(  "hola : "+this.authService.getUserId())
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
-  ///proxi 
     });
   }
- 
+
 }
  
 
