@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfessorSelectorComponent } from '../professor-user-id-selector/professor-selector.component'; 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
-// Importar módulos de Angular Material necesarios
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
