@@ -95,6 +95,7 @@
               "buildTarget": "coreui-free-angular-admin-template:build:development"
             }
           },
+          
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

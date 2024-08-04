@@ -48,7 +48,32 @@ export class AdvisoryContractService extends BaseService {
       params = params.append('includeDeleted', includeDeleted.toString());
       params = params.append('Page', page.toString());
       params = params.append('PageSize', pageSize.toString());
-      return this.http.get<ApiResponse>(`${this.apiUrl}/ByProffesorId/7e3892c0-9374-49fa-a3fd-53db637a4011`, { params });
+      return this.http.get<ApiResponse>(`${this.apiUrl}`, { params });
+    });
+  }
+  getAdvisoryContractsByStudentId(
+    researchLineId?: string,
+    includeDeleted: boolean = false,
+    startDate?: string,
+    endDate?: string,
+    page: number = 0,
+    pageSize: number = 10
+  ): Observable<ApiResponse> {
+    return this.performRequest(() => {
+      let params = new HttpParams();
+      if (researchLineId && researchLineId !== 'ALL') {
+        params = params.append('researchLineId', researchLineId);
+      }
+      if (startDate && startDate !== '') {
+        params = params.append('startDate', startDate);
+      }
+      if (endDate && new Date(endDate).getTime() !== new Date().setHours(0, 0, 0, 0)) {
+        params = params.append('endDate', endDate);
+      }
+      params = params.append('includeDeleted', includeDeleted.toString());
+      params = params.append('Page', page.toString());
+      params = params.append('PageSize', pageSize.toString());
+      return this.http.get<ApiResponse>(`${this.apiUrl}`, { params });
     });
   }
   

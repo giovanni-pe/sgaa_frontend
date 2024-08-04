@@ -1,0 +1,45 @@
+<div class="appointment-form">
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="professorId">Profesor:</label>
+      <app-professor-selector (professorChanged)="onProfessorChanged($event)"></app-professor-selector>
+    </div>
+
+   
+
+  
+    <div class="form-group">
+      <label for="professorEmail">Professor Email:</label>
+      <input id="professorEmail" formControlName="professorEmail" type="email">
+    </div>
+
+    <div class="form-group">
+      <label for="studentEmail">Student Email:</label>
+      <input id="studentEmail" formControlName="studentEmail" type="email">
+    </div>
+
+    <div class="form-group">
+      <label for="startDateTime">Start Date Time:</label>
+      <input id="startDateTime" formControlName="startDateTime" type="datetime-local">
+    </div>
+
+    <div class="form-group">
+      <label for="endDateDateTime">End Date Time:</label>
+      <input id="endDateDateTime" formControlName="endDateDateTime" type="datetime-local">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Create Appointment</button>
+    </div>
+  </form>
+
+  <div *ngIf="selectedIframeUrl" class="calendar-iframe">
+    <h3>Calendar View</h3>
+    <iframe [src]="selectedIframeUrl" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>

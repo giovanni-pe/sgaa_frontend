@@ -2,6 +2,7 @@ import { ApplicationConfig, importProvidersFrom, APP_INITIALIZER } from '@angula
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ConfigService } from './core/services/config.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AuthInterceptor } from './auth.interceptor';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -10,7 +11,7 @@ import {
   withRouterConfig,
   withViewTransitions
 } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS,HttpClientModule, HttpClient } from '@angular/common/http';
 import { DropdownModule, SidebarModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
@@ -30,6 +31,11 @@ export function initializeApp(configService: ConfigService) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+     {
+       provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+     multi: true
+     },
     ConfigService,
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [ConfigService], multi: true },
 

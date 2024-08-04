@@ -1,0 +1,6 @@
+<label for="inputProfessor">{{ 'PROFESSOR' | translate }}</label>
+<select class="form-control" id="inputProfessor" [(ngModel)]="selectedProfessorUserId" (change)="onProfessorChange()">
+  <option *ngFor="let professor of professors" [value]="professor.user.id">
+    {{ professor.user.firstName }} {{ professor.user.lastName }}
+  </option>
+</select>

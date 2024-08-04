@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 interface Professor {
   id: string;
   user: {
+    id: string;
     firstName: string;
     lastName: string;
   };
@@ -21,7 +22,7 @@ interface Professor {
 })
 export class ProfessorSelectorComponent implements OnInit {
   professors: Professor[] = [];
-  selectedProfessorId: string = '';
+  selectedProfessorUserId: string = '';
   
 
   @Output() professorChanged = new EventEmitter<string>();
@@ -38,6 +39,6 @@ export class ProfessorSelectorComponent implements OnInit {
   }
 
   onProfessorChange(): void {
-    this.professorChanged.emit(this.selectedProfessorId);
+    this.professorChanged.emit(this.selectedProfessorUserId);
   }
 }

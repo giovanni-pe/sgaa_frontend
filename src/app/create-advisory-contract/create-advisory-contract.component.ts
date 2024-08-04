@@ -87,8 +87,11 @@ export class CreateAdvisoryContractComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     });
     const body = this.advisoryForm.value;
-
-    this.http.post(url, body, { headers })
+    const options = {
+      headers: headers,
+      withCredentials: true // Esto habilita el envío de credenciales (cookies) en la solicitud
+    };
+    this.http.post(url, body,  options)
       .pipe(
         catchError(error => {
           console.error('Error:', error);

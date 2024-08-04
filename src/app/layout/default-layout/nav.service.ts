@@ -161,8 +161,8 @@ export class NavService {
         iconComponent: { name: 'cil-notes' },
         children: [
           {
-            name: this.translate.instant('Form Control'),
-            url: '/forms/form-control',
+            name: this.translate.instant('crear cita'),
+            url: 'create-appointment',
             icon: 'nav-icon-bullet'
           },
           {

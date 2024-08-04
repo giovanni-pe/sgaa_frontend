@@ -47,6 +47,9 @@ export const routes: Routes = [
       { path: 'create-advisory-contract',
         loadChildren: () => import('./create-advisory-contract/routes').then((m) => m.routes)
       },
+      { path: 'create-appointment',
+        loadChildren: () => import('./appointment/routes').then((m) => m.routes)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/routes').then((m) => m.routes)
