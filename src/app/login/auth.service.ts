@@ -74,6 +74,7 @@ export class AuthService {
     this.userId = localStorage.getItem('userId');
     this.userEmail = localStorage.getItem('userEmail');
     this.userRole = localStorage.getItem('userRole');
+    console.log(localStorage.getItem('userRole'));
   }
 
   getUserId(): string | null {
