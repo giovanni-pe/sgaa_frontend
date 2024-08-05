@@ -1,0 +1,5 @@
+<label for="professorSelector">Profesor:</label>
+<select class="form-control" id="professorSelector" [(ngModel)]="selectedProfessorId" (change)="onProfessorChange()">
+  <option value="" disabled selected>Seleccione un profesor</option>
+  <option *ngFor="let professor of professors" [value]="professor.id">{{ professor.name }}</option>
+</select>

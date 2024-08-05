@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { LineSelectorComponent } from '../line-selector/line-selector.component'; // Asegúrate de la ruta correcta
-import { ProfessorSelectorComponent } from '../professor-selector/professor-selector.component'; // Asegúrate de la ruta correcta
-import { StudentService } from '../core/services/student.service'; // Asegúrate de la ruta correcta
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { LineSelectorByGroupIdComponent } from '../line-selector-by-group-id/line-selector-by-group-id.component';
+import { ProfessorSelectorByGroupIdComponent } from '../professor-selector-by-group-id/professor-selector-by-group-id.component';
+import { GroupSelectorComponent } from '../group-selector/group-selector.component';
+import { StudentService } from '../core/services/student.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,17 +13,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-create-advisory-contract',
-  templateUrl: './create-advisory-contract.component.html',
+  templateUrl: './create-advisory-contract.component.html', // Asegúrate de que el nombre del archivo es correcto
   styleUrls: ['./create-advisory-contract.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    LineSelectorComponent,
-    ProfessorSelectorComponent,
+    LineSelectorByGroupIdComponent,
+    ProfessorSelectorByGroupIdComponent,
+    GroupSelectorComponent,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -37,6 +39,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 export class CreateAdvisoryContractComponent implements OnInit {
   advisoryForm: FormGroup;
   errorMessage: string | null = null;
+  selectedGroupId: string = ''; // Variable para almacenar el groupId seleccionado
 
   constructor(
     private fb: FormBuilder,
@@ -48,6 +51,7 @@ export class CreateAdvisoryContractComponent implements OnInit {
       professorId: [''],
       studentId: [''],
       researchLineId: [''],
+      researchGroupId: [''],
       thesisTopic: [''],
       message: [''],
       status: [0]
@@ -71,6 +75,13 @@ export class CreateAdvisoryContractComponent implements OnInit {
     );
   }
 
+  onGroupChanged(groupId: string) {
+    this.advisoryForm.patchValue({ researchGroupId: groupId });
+    this.selectedGroupId = groupId; // Actualiza el groupId seleccionado
+    // Reinicia las selecciones de línea y profesor cuando cambia el grupo
+    this.advisoryForm.patchValue({ researchLineId: '', professorId: '' });
+  }
+
   onLineChanged(lineId: string) {
     this.advisoryForm.patchValue({ researchLineId: lineId });
   }
@@ -91,7 +102,7 @@ export class CreateAdvisoryContractComponent implements OnInit {
       headers: headers,
       withCredentials: true // Esto habilita el envío de credenciales (cookies) en la solicitud
     };
-    this.http.post(url, body,  options)
+    this.http.post(url, body, options)
       .pipe(
         catchError(error => {
           console.error('Error:', error);
@@ -118,9 +129,11 @@ export class CreateAdvisoryContractComponent implements OnInit {
       professorId: '',
       studentId: this.advisoryForm.value.studentId, // Mantener el ID del estudiante
       researchLineId: '',
+      researchGroupId: '',
       thesisTopic: '',
       message: '',
       status: 0
     });
+    this.selectedGroupId = ''; // Reiniciar el groupId seleccionado
   }
 }

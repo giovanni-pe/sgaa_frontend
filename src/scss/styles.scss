@@ -25,3 +25,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Otras opciones de temas claros */
+/* styles.scss */
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';

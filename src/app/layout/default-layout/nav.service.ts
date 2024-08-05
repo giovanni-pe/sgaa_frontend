@@ -181,26 +181,6 @@ export class NavService {
         roles: ['admin', 'Student']
       },
       {
-        name: this.translate.instant('Contratos de Asesoria'),
-        url: '/buttons',
-        iconComponent: { name: 'cil-cursor' },
-        children: [
-          {
-            name: this.translate.instant('Button groups'),
-            url: '/buttons/button-groups',
-            icon: 'nav-icon-bullet',
-            roles: ['admin', 'Professor']
-          },
-          {
-            name: this.translate.instant('Dropdowns'),
-            url: '/buttons/dropdowns',
-            icon: 'nav-icon-bullet',
-            roles: ['admin']
-          }
-        ],
-        roles: ['Professor']
-      },
-      {
         name: this.translate.instant('Citas'),
         url: '/forms',
         iconComponent: { name: 'cil-notes' },

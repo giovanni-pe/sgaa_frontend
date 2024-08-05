@@ -1,0 +1,5 @@
+<label for="lineSelector">Línea de Investigación:</label>
+<select class="form-control" id="lineSelector" [(ngModel)]="selectedLineId" (change)="onLineChange()">
+  <option value="" disabled selected>Seleccione una línea</option>
+  <option *ngFor="let line of lines" [value]="line.id">{{ line.name }}</option>
+</select>

@@ -1,0 +1,4 @@
+<label for="inputGroup">{{ 'GROUP' | translate }}</label>
+<select class="form-control" id="inputGroup" [(ngModel)]="selectedGroupId" (change)="onGroupChange()">
+  <option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</option>
+</select>
